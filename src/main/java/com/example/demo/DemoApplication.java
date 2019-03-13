@@ -14,6 +14,7 @@ public class DemoApplication{
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+
 }
 //@SpringBootApplication
 //@MapperScan("com.example")
