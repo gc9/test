@@ -1,0 +1,64 @@
+spring:
+  # 表示放在classpath的i18n文件夹，文件前缀为mess
+  messages:
+    basename: language/messages
+  datasource:
+    # driverClassName: net.sf.log4jdbc.DriverSpy
+    # url: jdbc:log4jdbc:mysql://mysql.zhangzp.cn:3306/hadoop2
+    driverClassName: net.sf.log4jdbc.DriverSpy
+    url: jdbc:log4jdbc:mysql://localhost:8090/estate?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull
+    username: admin
+    password: bckj2018
+    filters: stat
+    maxActive: 30
+    initialSize: 5
+    maxWait: 60000
+    minIdle: 5
+#    maxIdle: 20
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 1200000
+  freemarker:
+      allow-request-override: false
+      allow-session-override: false
+      check-template-location: true
+      expose-session-attributes: false
+      content-type: text/html
+      expose-request-attributes: false
+      enabled: true
+      charset: UTF-8
+      cache: false
+      template-loader-path: classpath:/ftl
+      prefix:
+      suffix: .ftl
+      request-context-attribute: request
+      setting:
+        number_format: 0.########
+    # 静态资源引用
+  mvc:
+    static-path-pattern: /static/**
+
+
+### 短信
+hb:
+  uname: 10690356
+  passwd: Whztyz-29
+  label: ES-TEST
+
+### 文件上传
+oss:
+  # OSS访问编号
+  accessKeyId: LTAILDiJQnQQ3qnX
+  # OSS访问密钥
+  accessKeySecret: r9XOTBRv5nf49DSX4dmlX965JE9xTH
+  # OSS存储空间
+  bucketName: shangdong-estate-oss
+  file:
+    maxsize: 102400
+    file_img_extension: bmp,jpg,gif,jpeg,png
+
+
+#
+sysfile:
+  solt: ffsolt
+  loginLimitCount: 5
+  sysName: Vtoken2

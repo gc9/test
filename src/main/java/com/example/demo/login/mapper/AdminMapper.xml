@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.login.mapper.AdminMapper">
+    
+    <resultMap id="BaseResultMap" type="com.example.demo.login.domain.Admin">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="real_name" jdbcType="VARCHAR" property="realName" />
+        <result column="head_pic" jdbcType="VARCHAR" property="headPic" />
+        <result column="login_error_count" jdbcType="INTEGER" property="loginErrorCount" />
+        <result column="login_error_time" jdbcType="TIMESTAMP" property="loginErrorTime" />
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="create_ip" jdbcType="VARCHAR" property="createIp" />
+        <result column="update_pwd_count" jdbcType="INTEGER" property="updatePwdCount" />
+        <result column="limit_count" jdbcType="INTEGER" property="limitCount" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="develop_bus" jdbcType="VARCHAR" property="developBus" />
+
+    </resultMap>
+    
+    <sql id="Param_Base_Clause">
+        <if test="map != null">
+            <foreach collection=" map.list " item="criteria">
+                 ${criteria.condition} 
+                <if test=" criteria.haveValue ">
+                     #{criteria.value} 
+                </if>
+            </foreach>
+        </if>
+    </sql>
+    
+    <sql id="Base_Column_List">
+        id, admin_name, password, real_name, head_pic, login_error_count, login_error_time, 
+        last_login_time, update_by, update_time, create_by, create_time, create_ip, update_pwd_count, 
+        limit_count, status, mobile, remark,develop_bus
+    </sql>
+    
+
+    <select id="selectByCondition1" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tb_admin
+        <include refid="Param_Base_Clause" />
+    </select>
+    
+</mapper>
